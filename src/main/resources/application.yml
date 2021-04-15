@@ -1,0 +1,23 @@
+server:
+  port: 8081
+spring:
+  kafka:
+    bootstrap-servers: samsclubcnds-eventhub.servicebus.windows.net:9093
+    properties:
+      sasl:
+        jaas:
+          config: xxx
+        mechanism: PLAIN
+      security:
+        protocol: SASL_SSL
+    producer:
+      asks: all
+    consumer:
+      autoOffsetReset: latest
+      enable-auto-commit: false
+      fetchMinSize: 1
+      fetchMaxWait: 500
+      maxPollRecords: 500
+    listener:
+      ack-mode: MANUAL
+      concurrency: 2
